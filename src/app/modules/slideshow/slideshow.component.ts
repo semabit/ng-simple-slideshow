@@ -1,14 +1,21 @@
 import {
-  Component, ElementRef, EventEmitter, Inject, Input, Output, PLATFORM_ID, Renderer2,
-  ViewChild,
-  DoCheck
+  Component,
+  DoCheck,
+  ElementRef,
+  EventEmitter,
+  Inject,
+  Input,
+  Output,
+  PLATFORM_ID,
+  Renderer2,
+  ViewChild
 } from '@angular/core';
-import { SwipeService } from './swipe.service';
-import { isNullOrUndefined, isUndefined } from 'util';
-import { isPlatformServer, DOCUMENT } from '@angular/common';
-import { ISlide } from './ISlide';
-import { IImage } from './IImage';
-import { DomSanitizer, TransferState, makeStateKey } from '@angular/platform-browser';
+import {SwipeService} from './swipe.service';
+import {isNullOrUndefined, isUndefined} from 'util';
+import {DOCUMENT, isPlatformServer} from '@angular/common';
+import {ISlide} from './ISlide';
+import {IImage} from './IImage';
+import {DomSanitizer, makeStateKey, TransferState} from '@angular/platform-browser';
 
 const FIRST_SLIDE_KEY = makeStateKey<any>('firstSlide');
 
@@ -61,7 +68,8 @@ export class SlideshowComponent implements DoCheck {
     public sanitizer: DomSanitizer,
     @Inject(PLATFORM_ID) private platform_id: any,
     @Inject(DOCUMENT) private document: any
-  ) { }
+  ) {
+  }
 
   ngDoCheck() {
     if (this.debug === true) console.log(`ngOnChanges()`);
@@ -105,7 +113,9 @@ export class SlideshowComponent implements DoCheck {
   onClick(e: MouseEvent): void {
     e.preventDefault();
     const currentSlide = this.slides.length > 0 && this.slides[this.slideIndex];
-    if (currentSlide && !isNullOrUndefined(currentSlide.image.href)) {
+    if (currentSlide && currentSlide.image.clickAction) {
+      currentSlide.image.clickAction();
+    } else if (currentSlide && !isNullOrUndefined(currentSlide.image.href)) {
       this.document.location.href = currentSlide.image.href;
     }
   }
@@ -253,7 +263,7 @@ export class SlideshowComponent implements DoCheck {
     if (this.debug === true) console.log(`buildLazyLoadSlideArray()`);
     for (let image of this.imageUrls) {
       this.slides.push({
-        image: (typeof image === 'string' ? { url: null } : { url: null, href: image.href || '' }),
+        image: (typeof image === 'string' ? {url: null} : {url: null, href: image.href || ''}),
         action: '',
         leftSide: false,
         rightSide: false,
@@ -272,7 +282,7 @@ export class SlideshowComponent implements DoCheck {
     if (this.debug === true) console.log(`buildSlideArray()`);
     for (let image of this.imageUrls) {
       this.slides.push({
-        image: (typeof image === 'string' ? { url: image } : image),
+        image: (typeof image === 'string' ? {url: image} : image),
         action: '',
         leftSide: false,
         rightSide: false,
@@ -294,7 +304,7 @@ export class SlideshowComponent implements DoCheck {
 
     // if server side, we don't need to worry about the rest of the slides
     if (isPlatformServer(this.platform_id)) {
-      this.slides[tmpIndex].image = (typeof tmpImage === 'string' ? { url: tmpImage } : tmpImage);
+      this.slides[tmpIndex].image = (typeof tmpImage === 'string' ? {url: tmpImage} : tmpImage);
       this.slides[tmpIndex].loaded = true;
       this.transferState.set(FIRST_SLIDE_KEY, this.slides[tmpIndex]);
     }
@@ -305,7 +315,7 @@ export class SlideshowComponent implements DoCheck {
         let loadImage = new Image();
         loadImage.src = (typeof tmpImage === 'string' ? tmpImage : tmpImage.url);
         loadImage.addEventListener('load', () => {
-          this.slides[tmpIndex].image = (typeof tmpImage === 'string' ? { url: tmpImage } : tmpImage);
+          this.slides[tmpIndex].image = (typeof tmpImage === 'string' ? {url: tmpImage} : tmpImage);
           this.slides[tmpIndex].loaded = true;
         });
       }
@@ -328,7 +338,7 @@ export class SlideshowComponent implements DoCheck {
           const tmpImage = this.imageUrls[i];
           let loadImage = new Image();
           loadImage.addEventListener('load', () => {
-            this.slides[i].image = (typeof tmpImage === 'string' ? { url: tmpImage } : tmpImage);
+            this.slides[i].image = (typeof tmpImage === 'string' ? {url: tmpImage} : tmpImage);
             this.slides[i].loaded = true;
             resolve();
           });

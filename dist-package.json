@@ -9,14 +9,14 @@
     "url": "https://richard.pizza"
   },
   "bugs": {
-    "url": "https://github.com/dockleryxk/ng-simple-slideshow/issues"
+    "url": "https://github.com/semabit/ng-simple-slideshow/issues"
   },
   "peerDependencies": {
     "@angular/core": "^4.0.0 || ^5.0.0 || ^6.0.0"
   },
   "deprecated": false,
   "description": "A simple, responsive slideshow for Angular 4+.",
-  "homepage": "https://github.com/dockleryxk/ng-simple-slideshow",
+  "homepage": "https://github.com/semabit/ng-simple-slideshow",
   "keywords": [
     "angular",
     "angular 2",
@@ -39,7 +39,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dockleryxk/ng-simple-slideshow.git"
+    "url": "git+https://github.com/semabit/ng-simple-slideshow.git"
   },
   "main": "bundles/ng-simple-slideshow.umd.js",
   "module": "ng-simple-slideshow.es5.js",

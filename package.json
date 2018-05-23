@@ -13,14 +13,14 @@
     "packagr": "rm -rf .ng_build dist && ng-packagr -p ng-package.json && npm run dist-package",
     "deploy": "npm run build && firebase deploy"
   },
-  "private": false,
+  "private": true,
   "author": {
     "name": "Richard Jeffords",
     "email": "rajeffords@gmail.com",
     "url": "https://richard.pizza"
   },
   "bugs": {
-    "url": "https://github.com/dockleryxk/ng-simple-slideshow/issues"
+    "url": "https://github.com/semabit/ng-simple-slideshow/issues"
   },
   "dependencies": {
     "@angular/common": "6.0.1",
@@ -83,6 +83,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dockleryxk/ng-simple-slideshow.git"
+    "url": "git+https://github.com/semabit/ng-simple-slideshow.git"
   }
 }

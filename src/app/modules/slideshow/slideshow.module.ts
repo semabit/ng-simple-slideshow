@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SlideshowComponent } from './slideshow.component';
-import { SwipeService } from './swipe.service';
-import { BrowserTransferStateModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SlideshowComponent} from './slideshow.component';
+import {SwipeService} from './swipe.service';
+import {BrowserTransferStateModule} from '@angular/platform-browser';
 
 @NgModule({
   imports: [
@@ -19,4 +19,5 @@ import { BrowserTransferStateModule } from '@angular/platform-browser';
     SwipeService
   ]
 })
-export class SlideshowModule { }
+export class SlideshowModule {
+}
