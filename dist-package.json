@@ -1,13 +1,9 @@
 {
-  "name": "ng-simple-slideshow",
+  "name": "@semabit/ng-simple-slideshow",
   "version": "1.2.2",
   "license": "MIT",
   "private": false,
-  "author": {
-    "name": "Richard Jeffords",
-    "email": "rajeffords@gmail.com",
-    "url": "https://richard.pizza"
-  },
+  "author": "Richard Jeffords <rajeffords@gmail.com> (https://richard.pizza)",
   "bugs": {
     "url": "https://github.com/semabit/ng-simple-slideshow/issues"
   },
